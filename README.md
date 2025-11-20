@@ -1,4 +1,4 @@
-# The-gateway-of-the-Smart-Walker-is-not-authorized-for-remote-code-execution-RCE-
+# The-gateway-of-the-Shengxingzhe-is-not-authorized-for-remote-code-execution-RCE-
 Unauthenticated Remote Code Execution (RCE) in Shengxingzhe Gateway 
 Summary 
 Asset search: https://fofa.info/
