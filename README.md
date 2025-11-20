@@ -3,10 +3,10 @@ Unauthenticated Remote Code Execution (RCE) in Shengxingzhe Gateway
 Summary 
 Asset search: https://fofa.info/
 
-FOFA：cert.sn="9371290284317297864" && title=="统一认证网关"
+FOFA：fid="0A/LQ+Ox7jJeL4ehQ7qKrg=="
 
 
-<img width="415" height="240" alt="image" src="https://github.com/user-attachments/assets/c28a17c1-5641-4214-b49e-a426cee27098" />
+<img width="2492" height="1344" alt="image" src="https://github.com/user-attachments/assets/cea1eeca-c6dc-4a34-a26a-24d75864f60e" />
 
 A critical unauthenticated remote code execution (RCE) vulnerability exists in the Shenxingzhe gateway manufactured by Changsha Tongxun Computer Technology Co., Ltd. An attacker can execute arbitrary system commands on the device without authentication. 
 Description 
